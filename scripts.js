@@ -46,7 +46,7 @@ function rightClick(e) {
 }
 
 new WinBox({
-  title: "Envy Setup",
+  title: "OS Name Setup",
   modal: true,
   class: "eclipsemono",
   mount: document.getElementById("oobe").cloneNode(true),
@@ -123,7 +123,7 @@ function showDiscordWindow() {
 
 function showotherSearch() {
   new WinBox({
-    title: "Envy search",
+    title: "OS Name search",
     class: ["no-min", "no-max", "no-title", "eclipsemono"],
     x: "left",
     y: "bottom",
@@ -200,7 +200,7 @@ function showDualWindow() {
     right: 0,
     bottom: 35,
     left: 0,
-    url: "https://envywebos.github.io",
+    url: "https://zhenplaz.github.io",
   });
 }
 
