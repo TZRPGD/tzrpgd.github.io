@@ -1,15 +1,15 @@
-![Envy logo](envy.jpeg)
+!INSERT IMAGE HERE
 
-## Envy, the open OS
-Envy is a environment for locked down devices, such as Chromebooks or Windows devices.
+## OS Name, the open OS
+OS Name is a environment for locked down devices, such as Chromebooks or Windows devices.
 
 ## How do I access Envy?
-Via [https://envywebos.github.io](https://envywebos.github.io/).
+Via [OS Link](OS Link).
 
-## What can Envy do?
+## What can OS Name do?
 **THIS PART OF THE README IS DUE TO CHANGE.**
 
-  Envy can do multiple things, including:
+  OS Name can do multiple things, including:
   
   * Alpine Linux *(via JS/Linux!)*
   * Basic gaming (Anything HTML5/js)
@@ -17,5 +17,5 @@ Via [https://envywebos.github.io](https://envywebos.github.io/).
   * Discord *(via Discross!)*
   * x86 Emulation! 
 
-![Envy desktop](45preview.png)
+![OS Name desktop](Preview image)
 
