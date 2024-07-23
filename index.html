@@ -13,12 +13,20 @@
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             height: 100vh;
             transition: background-color 0.3s;
+        }
+        header {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .spacer {
+            height: 20px;
         }
         .container {
             background: #fff;
@@ -108,8 +116,9 @@
 </head>
 <body>
 
+<header>Geometry Dash Trigger Generator</header>
+<div class="spacer"></div>
 <div class="container">
-    <h1>Geometry Dash Trigger Generator</h1>
     <div class="form-group">
         <label for="triggerName">Trigger Name</label>
         <input type="text" id="triggerName" placeholder="Enter trigger name">
@@ -133,6 +142,7 @@
     </div>
     <div class="output" id="output"></div>
 </div>
+<div class="spacer"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
