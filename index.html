@@ -1,10 +1,139 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Zhen's Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometry Dash Trigger Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: calc(100% - 16px);
+            padding: 8px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            padding: 10px 20px;
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background: #0056b3;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e9ecef;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .circle {
+            width: 200px;
+            height: 200px;
+            border: 10px solid black;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            position: relative;
+            background-color: var(--circle-color);
+        }
+        .circle .inner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .circle .inner span {
+            font-size: 100px;
+            color: white;
+            text-shadow: 
+                -4px -4px 0 #000, 4px -4px 0 #000, 
+                -4px 4px 0 #000, 4px 4px 0 #000, 
+                -4px 0 0 #000, 4px 0 0 #000, 
+                0 -4px 0 #000, 0 4px 0 #000; /* Thicker black outline with 4px offset */
+        }
+        .trigger-name {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-  <p>WORK IN PROGRESS</p>
-  <a href="https://discord.com/oauth2/authorize?client_id=1259151322524160083&response_type=code&redirect_uri=https%3A%2F%2Ftzrp.github.io&scope=guilds.join">CLICK THIS</a>
+
+<div class="container">
+    <h1>Geometry Dash Trigger Generator</h1>
+    <div class="form-group">
+        <label for="triggerName">Trigger Name</label>
+        <input type="text" id="triggerName" placeholder="Enter trigger name">
+    </div>
+    <div class="form-group">
+        <label for="triggerColor">Trigger Color</label>
+        <input type="color" id="triggerColor">
+    </div>
+    <div class="form-group">
+        <label for="triggerNumber">Center Number</label>
+        <input type="number" id="triggerNumber" placeholder="Enter number" value="0">
+    </div>
+    <div class="form-group">
+        <button onclick="generateTrigger()">Generate Trigger</button>
+    </div>
+    <div class="output" id="output"></div>
+</div>
+
+<script>
+    function generateTrigger() {
+        const name = document.getElementById('triggerName').value;
+        const color = document.getElementById('triggerColor').value;
+        const number = document.getElementById('triggerNumber').value;
+        const output = document.getElementById('output');
+
+        if (!name) {
+            alert('Please enter a trigger name.');
+            return;
+        }
+
+        const triggerHTML = `
+            <div class="trigger-name">${name}</div>
+            <div class="circle" style="--circle-color: ${color};">
+                <div class="inner">
+                    <span>${number}</span>
+                </div>
+            </div>
+        `;
+
+        output.innerHTML = triggerHTML;
+    }
+</script>
   <iframe src="https://discord.com/widget?id=1254836867954643046&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
   <div align='center'><a href='https://www.free-website-hit-counter.com'><img src='https://www.free-website-hit-counter.com/c.php?d=9&id=174799&s=36' border='0' alt='Free Website Hit Counter'></a><br / ><small><a href='https://www.free-website-hit-counter.com' title="Free Website Hit Counter">Free website hit counter</a></small></div>
 </body>
+</html>
