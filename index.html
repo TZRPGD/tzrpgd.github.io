@@ -132,6 +132,12 @@
         <input type="number" id="triggerNumber" placeholder="Enter number" value="0">
     </div>
     <div class="form-group">
+        <label for="showNumber">
+            <input type="checkbox" id="showNumber" checked>
+            Show Number
+        </label>
+    </div>
+    <div class="form-group">
         <button onclick="generateTrigger()">Generate Trigger</button>
     </div>
     <div class="form-group">
@@ -150,6 +156,7 @@
         const name = document.getElementById('triggerName').value;
         const color = document.getElementById('triggerColor').value;
         const number = document.getElementById('triggerNumber').value;
+        const showNumber = document.getElementById('showNumber').checked;
         const output = document.getElementById('output');
 
         if (!name) {
@@ -157,11 +164,13 @@
             return;
         }
 
+        const numberHTML = showNumber ? `<span>${number}</span>` : '';
+
         const triggerHTML = `
             <div class="trigger-name">${name}</div>
             <div class="circle" style="--circle-color: ${color};">
                 <div class="inner">
-                    <span>${number}</span>
+                    ${numberHTML}
                 </div>
             </div>
         `;
