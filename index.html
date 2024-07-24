@@ -68,33 +68,33 @@
             font-family: monospace;
             transition: background-color 0.3s;
         }
+        .circle {
         .shape {
-            width: 180px; /* Smaller width */
-            height: 180px; /* Smaller height */
+            width: 200px;
+            height: 200px;
             border: 10px solid black;
+            border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 20px auto;
             position: relative;
+            background-color: var(--circle-color);
             background-color: var(--shape-color);
         }
         .shape.circle {
             border-radius: 50%;
         }
+        .circle .inner {
         .shape.square {
             border-radius: 0;
-        }
-        .shape.diamond {
-            border-radius: 0;
-            transform: rotate(45deg);
         }
         .shape .inner {
             display: flex;
             justify-content: center;
             align-items: center;
-            transform: rotate(-45deg);
         }
+        .circle .inner span {
         .shape .inner span {
             font-size: 100px;
             color: white;
@@ -128,7 +128,6 @@
     </style>
 </head>
 <body>
-
 <header>Geometry Dash Trigger Generator</header>
 <div class="spacer"></div>
 <div class="container">
@@ -146,20 +145,19 @@
     </div>
     <div class="form-group">
         <label for="triggerNumber">Center Number</label>
-        <input type="text" id="triggerNumber" placeholder="Enter number" value="0">
+        <input type="number" id="triggerNumber" placeholder="Enter number" value="0">
     </div>
     <div class="form-group">
         <label for="triggerShape">Trigger Shape</label>
         <select id="triggerShape">
             <option value="circle">Circle</option>
             <option value="square">Square</option>
-            <option value="diamond">Diamond</option>
         </select>
     </div>
     <div class="form-group">
-        <label for="showShape">
-            <input type="checkbox" id="showShape" checked>
-            Show Shape
+        <label for="showCircle">
+            <input type="checkbox" id="showCircle" checked>
+            Show Circle
         </label>
     </div>
     <div class="form-group">
@@ -180,7 +178,6 @@
     <div class="output" id="output"></div>
 </div>
 <div class="spacer"></div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
@@ -190,32 +187,30 @@
         const color = document.getElementById('triggerColor').value;
         const number = document.getElementById('triggerNumber').value;
         const shape = document.getElementById('triggerShape').value;
-        const showShape = document.getElementById('showShape').checked;
+        const showCircle = document.getElementById('showCircle').checked;
         const showNumber = document.getElementById('showNumber').checked;
         const output = document.getElementById('output');
-
         if (!name) {
             alert('Please enter a trigger name.');
             return;
         }
 
         const numberHTML = showNumber ? `<span>${number}</span>` : '';
-        const shapeClass = shape === 'circle' ? 'circle' :
-                           shape === 'square' ? 'square' :
-                           'diamond';
-        const shapeHTML = showShape ? `<div class="shape ${shapeClass}" style="--shape-color: ${color};"><div class="inner">${numberHTML}</div></div>` : '';
+        const circleHTML = showCircle ? `<div class="circle" style="--circle-color: ${color};"><div class="inner">${numberHTML}</div></div>` : '';
+        const shapeClass = shape === 'circle' ? 'circle' : 'square';
+        const shapeHTML = showCircle ? `<div class="shape ${shapeClass}" style="--shape-color: ${color};"><div class="inner">${numberHTML}</div></div>` : '';
 
         const subnameHTML = subname ? `<div class="trigger-subname">${subname}</div>` : '';
 
         const triggerHTML = `
             <div class="trigger-name">${name}</div>
             ${subnameHTML}
+            ${circleHTML}
             ${shapeHTML}
         `;
 
         output.innerHTML = triggerHTML;
     }
-
     function saveAsPNG() {
         const output = document.getElementById('output');
         html2canvas(output).then(canvas => {
@@ -225,21 +220,17 @@
             link.click();
         });
     }
-
     function toggleDarkMode() {
         document.body.classList.toggle('dark-mode');
         Cookies.set('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled', { expires: 365 });
     }
-
     function checkDarkMode() {
         const darkMode = Cookies.get('darkMode');
         if (darkMode === 'enabled') {
             document.body.classList.add('dark-mode');
         }
     }
-
     document.addEventListener('DOMContentLoaded', checkDarkMode);
 </script>
-
 </body>
 </html>
